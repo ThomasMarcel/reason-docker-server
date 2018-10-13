@@ -5,3 +5,6 @@ _release
 *.byte
 *.native
 *.install
+
+.*.sw*
+/docker.log

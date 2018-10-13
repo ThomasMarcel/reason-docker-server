@@ -2,12 +2,16 @@
 # This first stage has opam & a ton of other things
 # inside it. The full image is 1.4Gigs! Which is way
 # too big to keep around.
-FROM ocaml/opam:alpine as base
+FROM ocaml/opam2:alpine as base
 
 RUN sudo apk update
 RUN sudo apk add m4
+
+RUN opam switch 4.06
+
 RUN sh -c "cd ~/opam-repository && git pull -q"
 RUN opam update
+
 # We'll need these two whatever we're building
 RUN opam install dune reason > /dev/null 2>&1
 
